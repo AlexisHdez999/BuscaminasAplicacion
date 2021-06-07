@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="30.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacion.InicioControlador">
+   <children>
+      <Label text="Bienvenido a Buscaminas">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </Label>
+      <Label text="Diga cuántas columnas, filas y minas desea para su buscaminas">
+         <padding>
+            <Insets left="30.0" right="30.0" />
+         </padding>
+      </Label>
+      <GridPane alignment="CENTER" hgap="20.0" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Columnas" />
+            <Label text="Filas" GridPane.rowIndex="1" />
+            <Label text="Minas" GridPane.rowIndex="2" />
+            <TextField fx:id="columnas" maxWidth="60.0" GridPane.columnIndex="1" />
+            <TextField fx:id="filas" maxWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="minas" maxWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+         <VBox.margin>
+            <Insets left="30.0" right="30.0" />
+         </VBox.margin>
+      </GridPane>
+      <Button fx:id="continuar" mnemonicParsing="false" onAction="#continuar" text="Continuar">
+         <VBox.margin>
+            <Insets bottom="40.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

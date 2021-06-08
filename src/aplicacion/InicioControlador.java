@@ -27,8 +27,6 @@ public class InicioControlador  {
 
     private Stage escenario ;
 
-
-
     public void setEscenario(Stage escenario){
         this.escenario = escenario ;
 
@@ -43,9 +41,9 @@ public class InicioControlador  {
     private void mostrarVistaBuscaminas(int col, int fil, int mina) {
         Stage escenario2 = new Stage() ;
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("BuscaminasVista.fxml"));
-        GridPane root = null;
+        VBox root = null;
         try {
-            root = (GridPane) cargador.load();
+            root = (VBox) cargador.load();
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -54,9 +52,11 @@ public class InicioControlador  {
 
         escenario2.setScene(escena);
         BucaminasVistaControlador controladorBuscaminas = cargador.getController() ;
+        controladorBuscaminas.setEscenario(escenario2);
         controladorBuscaminas.modificarVista(col, fil, mina);
+        escenario2.setResizable(false);
         escenario2.show();
-
+        escenario.close();
     }
 
 }

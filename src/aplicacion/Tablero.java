@@ -6,7 +6,6 @@ import java.util.Random;
  *@author Alexis Hernández Magaña
  *
  */
-
 public class Tablero{
 
     private Posicion[][] tablero ;

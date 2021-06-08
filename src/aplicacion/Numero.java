@@ -13,6 +13,7 @@ public class Numero extends Posicion {
 
     }
 
+
 /*Método para aumentar el número de una posicion de acuerdo al número de minas
  *@author Alexis Hernández Magaña
  *

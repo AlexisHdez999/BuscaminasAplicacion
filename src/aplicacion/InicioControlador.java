@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -32,11 +33,36 @@ public class InicioControlador  {
 
     }
     @FXML private void continuar(ActionEvent event){
-      int col = Integer.parseInt(columnas.getText())   ;
-      int fil = Integer.parseInt(filas.getText()) ;
-      int mina = Integer.parseInt(minas.getText());
+        int col, fil, mina ;
+        try {
+            col = Integer.parseInt(columnas.getText());
+            fil = Integer.parseInt(filas.getText());
+            mina = Integer.parseInt(minas.getText());
+        } catch(Exception exception){
+           mostrarAlerta("Ingrese un número en cada espacio, por favor");
+           return ;
+        }
+        if((col >35) | (col <2)){
+            mostrarAlerta("Ingrese un número válido de columnas, mínimo 2, máximo 35");
+            return;
+        }
+        if((fil >16) || (fil < 2)){
+            mostrarAlerta("Ingrese un número válido de filas, mínimo 2, máximo 16");
+            return ;
+        }
+        if((mina >=(col*fil)) || (mina < 1)){
+            mostrarAlerta("El número de minas debe ser mayor a 0 y menor al número de casillas");
+            return ;
+        }
       mostrarVistaBuscaminas(col, fil, mina) ;
     }
+
+
+        private void mostrarAlerta(String mensaje){
+            Alert a = new Alert(Alert.AlertType.WARNING) ;
+            a.setContentText(mensaje);
+            a.show() ;
+        }
 
     private void mostrarVistaBuscaminas(int col, int fil, int mina) {
         Stage escenario2 = new Stage() ;

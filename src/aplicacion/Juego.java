@@ -33,7 +33,7 @@ public class Juego{
 	tablero.llenarMinas(posiciones);
 	tablero.llenarTablero();
 	tablero.establecerTablero(posiciones);
-        System.out.println(this);
+//
     }
 
  /*Método para mostrar una casilla

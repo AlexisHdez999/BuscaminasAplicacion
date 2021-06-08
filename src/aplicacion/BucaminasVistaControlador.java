@@ -88,7 +88,9 @@ public class BucaminasVistaControlador {
                     gridPane.add(stack, i, j);
                 } else {
                     Numero numero = (Numero) tablero[j][i] ;
-                    Label label = new Label(numero.toString()) ;
+                    String noVecinos =   numero.toString();
+                    Label label = new Label(noVecinos) ;
+                    label.setStyle("-fx-text-fill:red");
                     stack.getChildren().addAll(label, boton);
                     gridPane.add(stack, i, j);
                 }
@@ -104,7 +106,6 @@ public class BucaminasVistaControlador {
         alert.show();
         mostrarTablero();
     }
-
 
     public void mostrarTablero(){
         ObservableList<Node> hijos = gridPane.getChildren();

@@ -1,37 +1,57 @@
 package aplicacion;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
+/**
+ * Clase para el controlador de la vista de inicio
+ * para definir el tamaño del tablero
+ */
 public class InicioControlador  {
-
+    /*
+    El número de columnas del tablero
+     */
     @FXML
     TextField columnas ;
+    /*
+    El número de filas del tablero
+     */
     @FXML
     TextField filas ;
+    /*
+    el número de minas del tablero
+     */
     @FXML TextField minas ;
+    /*
+    boton para cargar la vista principal
+     */
     @FXML Button continuar ;
 
+    /*
+    el escenario actual
+     */
     private Stage escenario ;
 
+    /**
+     * Método para establecer el escenario actual
+     * @param escenario el escenario actual
+     */
     public void setEscenario(Stage escenario){
         this.escenario = escenario ;
 
     }
+
+    //método que valida los campos de entrada y carga la vista principal
     @FXML private void continuar(ActionEvent event){
         int col, fil, mina ;
         try {
@@ -57,15 +77,17 @@ public class InicioControlador  {
       mostrarVistaBuscaminas(col, fil, mina) ;
     }
 
+    //método que muestra una alerta
+    private void mostrarAlerta(String mensaje){
+        Alert a = new Alert(Alert.AlertType.WARNING) ;
+        a.setContentText(mensaje);
+        a.setTitle("Buscaminas");
+        a.setHeaderText("");
+        a.show() ;
+    }
 
-        private void mostrarAlerta(String mensaje){
-            Alert a = new Alert(Alert.AlertType.WARNING) ;
-            a.setContentText(mensaje);
-            a.setTitle("Buscaminas");
-            a.setHeaderText("");
-            a.show() ;
-        }
 
+    //método que carga y muestra la vista principal
     private void mostrarVistaBuscaminas(int col, int fil, int mina) {
         Stage escenario2 = new Stage() ;
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("BuscaminasVista.fxml"));

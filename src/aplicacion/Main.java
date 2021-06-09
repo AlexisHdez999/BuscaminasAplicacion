@@ -7,10 +7,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * clase que carga la vista de inicio
+ */
 public class Main extends Application {
 
 
-
+    /**
+     * método que carga y muestra la vista de inicio
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("VistaInicio.fxml"));

@@ -19,23 +19,36 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * clase para el controlador de la vista principal
+ */
 public class BucaminasVistaControlador {
 
+    /*
+    El gridpane donde se colocan las casillas
+     */
     @FXML
     private GridPane gridPane ;
+    /*boton atrás*/
     @FXML
     private Button boton ;
+    /*el campo para los avisos de salida del juego
+     */
     @FXML
     private Label salida ;
-
+    /*el tablero del juego*/
     private Posicion[][] tablero ;
-
+    /*el escenario actual*/
     private Stage escenario ;
+    /*el número de minas del juego*/
     private int noMinas ;
+    /*el contador de las casillas mostradas*/
     private int contador ;
+    /*el número total de casillas*/
     private int totalCasillas ;
 
-    public void agregarAccion(){
+    //método para agregarle acción a las casillas
+    private void agregarAccion(){
         ObservableList<Node> hijos = gridPane.getChildren();
         for(Node n: hijos){
             StackPane s = (StackPane) n ;
@@ -64,6 +77,13 @@ public class BucaminasVistaControlador {
         }
     }
 
+    /**
+     * método para moidificar la vista principal de acuerdo al tamaño del tablero
+     * solicitado
+     * @param col el número de columnas del tablero
+     * @param fil el número de fils del tablero
+     * @param minas el número de minas en el tablero
+     */
     public void modificarVista(int col, int fil, int minas){
         noMinas = minas ;
         totalCasillas = col*fil ;
@@ -101,7 +121,8 @@ public class BucaminasVistaControlador {
         agregarAccion();
     }
 
-    public void lanzarFinal(){
+    //lanza un aviso de final de juego con alert
+    private void lanzarFinal(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION) ;
         alert.setContentText("Lo sentimos, usted ha perdido");
         alert.setTitle("Buscaminas");
@@ -112,13 +133,18 @@ public class BucaminasVistaControlador {
         mostrarTablero();
     }
 
+    /**
+     * método que avisa el final del juego al usuario
+     */
     public void lanzarAvisoFinal(){
         salida.setText("¡Lo sentimos, usted ha perdido!");
         salida.setStyle("-fx-font-weight:bold");
         mostrarTablero();
     }
 
-    public void mostrarTablero(){
+
+    //Muestra las minas en el tablero
+    private void mostrarTablero(){
         ObservableList<Node> hijos = gridPane.getChildren();
         for(Node n: hijos){
             StackPane s = (StackPane) n ;
@@ -132,6 +158,7 @@ public class BucaminasVistaControlador {
         }
     }
 
+    //método para revisar si se ganó el juego, si ya solo quedan minas sin mostrar
     public void revisarGanador(){
         if((totalCasillas-contador) == noMinas){
             salida.setText("¡¡¡Felicidades, usted ganó!!!");
@@ -140,13 +167,16 @@ public class BucaminasVistaControlador {
         }
     }
 
-
+    /**
+     * método que carga la vista de inicio nuevamente
+     * @param event
+     */
     @FXML private void accionAtras(ActionEvent event){
         cargarVistaInicio();
     }
 
-
-    public void cargarVistaInicio(){
+    //método para cargar la vista de inicio
+    private void cargarVistaInicio(){
         FXMLLoader cargador = new FXMLLoader(getClass().getResource("VistaInicio.fxml"));
         VBox root = null;
         try {
@@ -164,7 +194,10 @@ public class BucaminasVistaControlador {
         escenario.close();
     }
 
-
+    /**
+     * Establece el escenario actual
+     * @param escenario escenario actual
+     */
     public void setEscenario(Stage escenario){
         this.escenario = escenario ;
 

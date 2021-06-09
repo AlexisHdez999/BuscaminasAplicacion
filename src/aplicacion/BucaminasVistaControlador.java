@@ -25,6 +25,8 @@ public class BucaminasVistaControlador {
     private GridPane gridPane ;
     @FXML
     private Button boton ;
+    @FXML
+    private Label salida ;
 
     private Posicion[][] tablero ;
 
@@ -50,7 +52,7 @@ public class BucaminasVistaControlador {
                             Posicion p = tablero[fila][columna];
 
                             if(p.getClass() == Mina.class){
-                                lanzarFinal() ;
+                                lanzarAvisoFinal() ;
                                  return ;
                             }
                             contador++ ;
@@ -103,7 +105,16 @@ public class BucaminasVistaControlador {
         Alert alert = new Alert(Alert.AlertType.INFORMATION) ;
         alert.setContentText("Lo sentimos, usted ha perdido");
         alert.setTitle("Buscaminas");
+        alert.setHeaderText("");
+       // alert.setWidth(600);
+        //alert.setHeight(400);
         alert.show();
+        mostrarTablero();
+    }
+
+    public void lanzarAvisoFinal(){
+        salida.setText("¡Lo sentimos, usted ha perdido!");
+        salida.setStyle("-fx-font-weight:bold");
         mostrarTablero();
     }
 
@@ -123,10 +134,8 @@ public class BucaminasVistaControlador {
 
     public void revisarGanador(){
         if((totalCasillas-contador) == noMinas){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION) ;
-            alert.setContentText("Felicidades, usted ganó");
-            alert.setTitle("Buscaminas");
-            alert.show();
+            salida.setText("¡¡¡Felicidades, usted ganó!!!");
+            salida.setStyle("-fx-font-weight:bold");
             mostrarTablero();
         }
     }

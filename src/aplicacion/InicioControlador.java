@@ -61,6 +61,8 @@ public class InicioControlador  {
         private void mostrarAlerta(String mensaje){
             Alert a = new Alert(Alert.AlertType.WARNING) ;
             a.setContentText(mensaje);
+            a.setTitle("Buscaminas");
+            a.setHeaderText("");
             a.show() ;
         }
 
